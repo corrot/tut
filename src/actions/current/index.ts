@@ -1,10 +1,10 @@
-import { ThunkDispatch as Dispatch } from "redux-thunk";
+import { ThunkDispatch } from 'redux-thunk';
 
-import * as constants from "../../constants";
-import { ICurrent } from "../../types";
+import * as constants from '../../constants';
+import { ICurrent } from '../../types';
 
 export interface IAuthenticate {
-  type: constants.AUTHENTICATE;
+  type: constants.IAUTHENTICATE;
 }
 
 function authenticate(): IAuthenticate {
@@ -14,7 +14,7 @@ function authenticate(): IAuthenticate {
 }
 
 export interface IUnauthenticate {
-  type: constants.UNAUTHENTICATE;
+  type: constants.IUNAUTHENTICATE;
 }
 
 function unauthenticate(): IUnauthenticate {
@@ -26,26 +26,25 @@ function unauthenticate(): IUnauthenticate {
 export type AuthenticationAction = IAuthenticate | IUnauthenticate;
 
 export function logIn() {
-  return async (dispatch: Dispatch<AuthenticationAction, {}, any>) => {
-    await window.localStorage.setItem("authenticated", "true");
+  return async (dispatch: ThunkDispatch<AuthenticationAction, {}, any>) => {
+    await window.localStorage.setItem('authenticated', 'true');
     dispatch(authenticate());
   };
 }
 
 export function logOut() {
-  return async (dispatch: Dispatch<AuthenticationAction, {}, any>) => {
-    await window.localStorage.setItem("authenticated", "false");
+  return async (dispatch: ThunkDispatch<AuthenticationAction, {}, any>) => {
+    await window.localStorage.setItem('authenticated', 'false');
     dispatch(unauthenticate());
   };
 }
 
 export function checkAuthentication() {
-  return async (dispatch: Dispatch<AuthenticationAction, {}, any>) => {
-    const auth = await window.localStorage.getItem("authenticated");
-    const formattedAuth = typeof auth === "string" ?
-      JSON.parse(auth) :
-      null;
+  return async (dispatch: ThunkDispatch<AuthenticationAction, {}, any>) => {
+    const auth = await window.localStorage.getItem('authenticated');
+    const formattedAuth = typeof auth === 'string' ? JSON.parse(auth) : null;
 
+    // eslint-disable-next-line prettier/prettier
     formattedAuth ? dispatch(authenticate()) : dispatch(unauthenticate());
   };
 }

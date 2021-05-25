@@ -1,5 +1,7 @@
-export const AUTHENTICATE = "AUTHENTICATE";
-export type AUTHENTICATE = typeof AUTHENTICATE;
+export const AUTHENTICATE = 'AUTHENTICATE';
+export type IAUTHENTICATE = typeof AUTHENTICATE;
 
-export const UNAUTHENTICATE = "UNAUTHENTICATE";
-export type UNAUTHENTICATE = typeof UNAUTHENTICATE;
+export const UNAUTHENTICATE = 'UNAUTHENTICATE';
+export type IUNAUTHENTICATE = typeof UNAUTHENTICATE;
+
+export const BASE_URL = 'https://app.mylab.ge:6443/spec';
