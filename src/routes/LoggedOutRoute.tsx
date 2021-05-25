@@ -1,12 +1,13 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+/* eslint-disable react/jsx-props-no-spreading */
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 
-import history from "../helpers/history";
-import { ICurrent } from "../types";
+import history from '../helpers/history';
+import { ICurrent } from '../types';
 
 interface IProps {
-  exact?: boolean;
+  exact: boolean;
   isAuthenticated: boolean | null;
   path: string;
   component: React.ComponentType<any>;
@@ -18,8 +19,10 @@ const LoggedOutRoute = ({
   ...otherProps
 }: IProps) => {
   if (isAuthenticated === true) {
-    history.push("/home");
-    alert("this is a logged out route, you are logged in, redirected to home page");
+    history.push('/home');
+    alert(
+      'this is a logged out route, you are logged in, redirected to home page'
+    );
   }
 
   return (
@@ -28,9 +31,9 @@ const LoggedOutRoute = ({
         Logged Out Header
       </header> */}
       <Route
-        render={otherProps => (
+        render={(rest) => (
           <>
-            <Component {...otherProps} />
+            <Component {...rest} />
           </>
         )}
       />
@@ -42,9 +45,7 @@ const LoggedOutRoute = ({
 };
 
 const mapStateToProps = (state: ICurrent) => ({
-  isAuthenticated: state.isAuthenticated
+  isAuthenticated: state.isAuthenticated,
 });
 
-export default connect(
-  mapStateToProps
-)(LoggedOutRoute);
+export default connect(mapStateToProps)(LoggedOutRoute);

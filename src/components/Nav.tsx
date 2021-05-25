@@ -1,8 +1,8 @@
-import * as React from "react";
-import { connect } from "react-redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
 
-import { NavLink } from "react-router-dom";
-import { ICurrent } from "../types";
+import { NavLink } from 'react-router-dom';
+import { ICurrent } from '../types';
 
 interface IProps {
   isAuthenticated: boolean | null;
@@ -12,35 +12,25 @@ interface IProps {
 const Nav = ({ isAuthenticated, uuid }: IProps) => {
   const logInOut = isAuthenticated ? (
     <li>
-      <NavLink to="/log-out">
-        Log out
-      </NavLink>
+      <NavLink to="/log-out">Log out</NavLink>
     </li>
   ) : (
     <li>
-      <NavLink to="/log-in">
-        Log in
-      </NavLink>
+      <NavLink to="/log-in">Log in</NavLink>
     </li>
   );
 
   const mainLinks = isAuthenticated ? (
     <li>
-      <NavLink to="/home">
-        Home
-      </NavLink>
+      <NavLink to="/home">Home</NavLink>
     </li>
   ) : (
     <>
       <li>
-        <NavLink to="/">
-          Landing
-        </NavLink>
+        <NavLink to="/">Landing</NavLink>
       </li>
       <li>
-        <NavLink to="/about">
-          About
-        </NavLink>
+        <NavLink to="/about">About</NavLink>
       </li>
     </>
   );
@@ -71,6 +61,4 @@ const mapStateToProps = (state: ICurrent) => ({
   isAuthenticated: state.isAuthenticated,
 });
 
-export default connect(
-  mapStateToProps,
-)(Nav);
+export default connect(mapStateToProps)(Nav);
