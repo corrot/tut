@@ -1,4 +1,4 @@
 export interface ICurrent {
-    isAuthenticated: boolean | null;
-    uuid: string | null;
-  }
+  isAuthenticated: boolean | null;
+  uuid: string | null;
+}

@@ -9,7 +9,7 @@ export interface IAuthenticate {
 
 function authenticate(): IAuthenticate {
   return {
-    type: constants.AUTHENTICATE,
+    type: constants.AUTHENTICATE
   };
 }
 
@@ -19,7 +19,7 @@ export interface IUnauthenticate {
 
 function unauthenticate(): IUnauthenticate {
   return {
-    type: constants.UNAUTHENTICATE,
+    type: constants.UNAUTHENTICATE
   };
 }
 
@@ -44,7 +44,7 @@ export function checkAuthentication() {
     const auth = await window.localStorage.getItem('authenticated');
     const formattedAuth = typeof auth === 'string' ? JSON.parse(auth) : null;
 
-    // eslint-disable-next-line prettier/prettier
+    // eslint-disable-next-line no-unused-expressions
     formattedAuth ? dispatch(authenticate()) : dispatch(unauthenticate());
   };
 }

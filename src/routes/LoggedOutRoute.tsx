@@ -20,9 +20,7 @@ const LoggedOutRoute = ({
 }: IProps) => {
   if (isAuthenticated === true) {
     history.push('/home');
-    alert(
-      'this is a logged out route, you are logged in, redirected to home page'
-    );
+    alert('redirected to home page');
   }
 
   return (
@@ -45,7 +43,7 @@ const LoggedOutRoute = ({
 };
 
 const mapStateToProps = (state: ICurrent) => ({
-  isAuthenticated: state.isAuthenticated,
+  isAuthenticated: state.isAuthenticated
 });
 
 export default connect(mapStateToProps)(LoggedOutRoute);

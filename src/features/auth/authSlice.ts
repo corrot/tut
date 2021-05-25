@@ -5,7 +5,7 @@ import { ICurrent } from '../../types';
 export default function currentReducer(
   state: ICurrent = {
     uuid: null,
-    isAuthenticated: null,
+    isAuthenticated: null
   },
   action: IAuthenticate | IUnauthenticate
 ): ICurrent {

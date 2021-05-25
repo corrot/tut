@@ -24,7 +24,7 @@ interface ILection {
 }
 
 const Landing = () => {
-  const [lections, setLections] = React.useState<ILection[]>([]);
+  const [lections, setLections] = React.useState([]);
 
   const [editValue, setEditValue] = React.useState('');
   const [lector, setLector] = React.useState('');
@@ -52,15 +52,15 @@ const Landing = () => {
     });
   };
 
-  const handleChange = (e: React.ChangeEvent) => {
+  const handleChange = (e: any) => {
     setEditValue(e.target.value);
   };
 
-  const changeName = (e: React.ChangeEvent) => {
+  const changeName = (e: any) => {
     setName(e.target.value);
   };
 
-  const changeLector = (e: React.ChangeEvent) => {
+  const changeLector = (e: any) => {
     setLector(e.target.value);
   };
 
@@ -75,7 +75,7 @@ const Landing = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {lections.map((lection) => (
+          {lections.map((lection: ILection) => (
             <TableRow key={lection._id.$oid}>
               <TableCell component="th" scope="row">
                 {lection._id.$oid}
@@ -95,7 +95,7 @@ const Landing = () => {
       <LectionsTable />
       <TextField label="Edit value" onChange={(e) => handleChange(e)} />
       <div>
-        {lections.map((lection) => (
+        {lections.map((lection: ILection) => (
           <div key={lection._id.$oid}>
             <div>{JSON.stringify(lection)}</div>
             <Button

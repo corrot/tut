@@ -58,7 +58,7 @@ const Nav = ({ isAuthenticated, uuid }: IProps) => {
 
 const mapStateToProps = (state: ICurrent) => ({
   uuid: state.uuid,
-  isAuthenticated: state.isAuthenticated,
+  isAuthenticated: state.isAuthenticated
 });
 
 export default connect(mapStateToProps)(Nav);

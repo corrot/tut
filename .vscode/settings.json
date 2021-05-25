@@ -1,5 +1,5 @@
 {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "eslint.alwaysShowStatus": true,
     "editor.codeActionsOnSave": {
@@ -8,5 +8,7 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true
-    }
+    },
+    "jira-plugin.workingProject": "",
+    "prettier.eslintIntegration": true
 }

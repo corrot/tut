@@ -29,11 +29,11 @@ const App = ({ checkAuthenticationConnect, isAuthenticated }: IProps) => {
 };
 
 const mapStateToProps = (state: ICurrent) => ({
-  isAuthenticated: state.isAuthenticated,
+  isAuthenticated: state.isAuthenticated
 });
 
 const mapDispatchToProps = {
-  checkAuthenticationConnect: checkAuthentication,
+  checkAuthenticationConnect: checkAuthentication
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

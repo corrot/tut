@@ -1,7 +1,7 @@
-import * as React from "react";
-import { connect } from "react-redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
 
-import { logIn } from "../../actions/current";
+import { logIn } from '../../actions/current';
 
 interface IProps {
   logInConnect: () => void;
@@ -10,7 +10,9 @@ interface IProps {
 const LogIn = ({ logInConnect }: IProps) => (
   <>
     <p>Login page</p>
-    <button onClick={logInConnect}>log me in</button>
+    <button onClick={logInConnect} type="button">
+      log me in
+    </button>
   </>
 );
 
@@ -18,7 +20,4 @@ const mapDispatchToProps = {
   logInConnect: logIn
 };
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(LogIn);
+export default connect(null, mapDispatchToProps)(LogIn);

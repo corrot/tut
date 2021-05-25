@@ -41,7 +41,7 @@ const LoggedInRoute = ({
 };
 
 const mapStateToProps = (state: ICurrent) => ({
-  isAuthenticated: state.isAuthenticated,
+  isAuthenticated: state.isAuthenticated
 });
 
 export default connect(mapStateToProps)(LoggedInRoute);
