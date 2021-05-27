@@ -1,25 +1,29 @@
 import { ThunkDispatch } from 'redux-thunk';
 
-import * as constants from '../../constants';
-import { ICurrent } from '../../types';
+import {
+  AUTHENTICATE,
+  UNAUTHENTICATE,
+  IAUTHENTICATE,
+  IUNAUTHENTICATE
+} from 'constants/index';
 
 export interface IAuthenticate {
-  type: constants.IAUTHENTICATE;
+  type: IAUTHENTICATE;
 }
 
 function authenticate(): IAuthenticate {
   return {
-    type: constants.AUTHENTICATE
+    type: AUTHENTICATE
   };
 }
 
 export interface IUnauthenticate {
-  type: constants.IUNAUTHENTICATE;
+  type: IUNAUTHENTICATE;
 }
 
 function unauthenticate(): IUnauthenticate {
   return {
-    type: constants.UNAUTHENTICATE
+    type: UNAUTHENTICATE
   };
 }
 

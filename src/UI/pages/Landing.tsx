@@ -8,7 +8,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import api from '../../api';
+import { Link } from 'react-router-dom';
+
+import api from 'api';
 
 interface IId {
   $oid: string;
@@ -72,16 +74,28 @@ const Landing = () => {
             <TableCell>ID</TableCell>
             <TableCell align="right">Lector</TableCell>
             <TableCell align="right">Lection Name</TableCell>
+            <TableCell align="right">Edit</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {lections.map((lection: ILection) => (
             <TableRow key={lection._id.$oid}>
               <TableCell component="th" scope="row">
-                {lection._id.$oid}
+                <Link to={`course/${lection._id.$oid}`}>
+                  {lection._id.$oid}
+                </Link>
               </TableCell>
               <TableCell align="right">{lection.lector}</TableCell>
               <TableCell align="right">{lection.name}</TableCell>
+              <TableCell align="right">
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => editLection(lection._id.$oid)}
+                >
+                  submit
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -94,7 +108,7 @@ const Landing = () => {
       <p>Landing</p>
       <LectionsTable />
       <TextField label="Edit value" onChange={(e) => handleChange(e)} />
-      <div>
+      {/* <div>
         {lections.map((lection: ILection) => (
           <div key={lection._id.$oid}>
             <div>{JSON.stringify(lection)}</div>
@@ -107,7 +121,7 @@ const Landing = () => {
             </Button>
           </div>
         ))}
-      </div>
+      </div> */}
       <TextField label="lector" onChange={(e) => changeName(e)} />
       <TextField label="name" onChange={(e) => changeLector(e)} />
       <Button

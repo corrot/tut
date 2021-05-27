@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { NavLink } from 'react-router-dom';
-import { ICurrent } from '../types';
+import { ICurrent } from 'types';
 
 interface IProps {
   isAuthenticated: boolean | null;

@@ -3,8 +3,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
-import history from '../helpers/history';
-import { ICurrent } from '../types';
+import history from 'helpers/history';
+import { ICurrent } from 'types';
 
 interface IProps {
   exact: boolean;
@@ -16,7 +16,7 @@ interface IProps {
 const LoggedInRoute = ({
   component: Component,
   isAuthenticated,
-  ...otherProps
+  ...rest
 }: IProps) => {
   if (isAuthenticated === false) {
     history.push('/log-in');
@@ -27,15 +27,14 @@ const LoggedInRoute = ({
 
   return (
     <>
-      <header>Logged In Header</header>
       <Route
-        render={(rest) => (
+        {...rest}
+        render={(props) => (
           <>
-            <Component {...rest} />
+            <Component {...props} />
           </>
         )}
       />
-      <footer>Logged In Footer</footer>
     </>
   );
 };

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Route, Router } from 'react-router-dom';
 import { checkAuthentication } from './actions/current';
-import Nav from './components/Nav';
+import Nav from './UI/Nav';
 import history from './helpers/history';
 import Pages from './routes/Pages';
 import { ICurrent } from './types';
