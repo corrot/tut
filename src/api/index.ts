@@ -1,5 +1,5 @@
-import lections from './lections';
+import courses from './courses';
 
 export default {
-  lections
+  courses
 };

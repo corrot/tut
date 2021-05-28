@@ -12,45 +12,41 @@ import { Link } from 'react-router-dom';
 
 import api from 'api';
 
-interface IId {
-  $oid: string;
-}
-
-interface ILection {
+interface ICourse {
+  _id: string;
   lector: string;
   name: string;
-  repeat: [any];
   score: number;
-  tags: [any];
-  _id: IId;
+  tags: [string];
+  stream: [string];
 }
 
 const Landing = () => {
-  const [lections, setLections] = React.useState([]);
+  const [courses, setCourses] = React.useState([]);
 
   const [editValue, setEditValue] = React.useState('');
   const [lector, setLector] = React.useState('');
   const [name, setName] = React.useState('');
 
-  const getLections = () => {
-    api.lections.getLections().then((res) => {
-      setLections(res?.data);
+  const getCourses = () => {
+    api.courses.getCourses().then((res) => {
+      setCourses(res?.data);
     });
   };
 
   React.useEffect(() => {
-    getLections();
+    getCourses();
   }, []);
 
-  const editLection = (id: string) => {
-    api.lections.editLections(id, editValue).then((res) => {
-      getLections();
+  const editCourse = (id: string) => {
+    api.courses.editCourse(id, editValue).then((res) => {
+      getCourses();
     });
   };
 
-  const createLection = () => {
-    api.lections.postLection(lector, name).then((res) => {
-      getLections();
+  const createCourse = () => {
+    api.courses.postCourse(lector, name).then((res) => {
+      getCourses();
     });
   };
 
@@ -78,12 +74,10 @@ const Landing = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {lections.map((lection: ILection) => (
-            <TableRow key={lection._id.$oid}>
+          {courses.map((lection: ICourse) => (
+            <TableRow key={lection._id}>
               <TableCell component="th" scope="row">
-                <Link to={`course/${lection._id.$oid}`}>
-                  {lection._id.$oid}
-                </Link>
+                <Link to={`course/${lection._id}`}>{lection._id}</Link>
               </TableCell>
               <TableCell align="right">{lection.lector}</TableCell>
               <TableCell align="right">{lection.name}</TableCell>
@@ -91,7 +85,7 @@ const Landing = () => {
                 <Button
                   variant="outlined"
                   color="primary"
-                  onClick={() => editLection(lection._id.$oid)}
+                  onClick={() => editCourse(lection._id)}
                 >
                   submit
                 </Button>
@@ -109,7 +103,7 @@ const Landing = () => {
       <LectionsTable />
       <TextField label="Edit value" onChange={(e) => handleChange(e)} />
       {/* <div>
-        {lections.map((lection: ILection) => (
+        {lections.map((lection: ICourse) => (
           <div key={lection._id.$oid}>
             <div>{JSON.stringify(lection)}</div>
             <Button
@@ -127,7 +121,7 @@ const Landing = () => {
       <Button
         variant="outlined"
         color="secondary"
-        onClick={() => createLection()}
+        onClick={() => createCourse()}
       >
         add lection
       </Button>

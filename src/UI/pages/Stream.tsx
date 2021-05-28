@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import Video from 'components/shared/OpenVidu';
+import Video from 'lib/OpenVidu';
 
 interface IStreamProps {
   id: string;
